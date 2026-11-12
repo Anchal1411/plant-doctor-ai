@@ -72,9 +72,20 @@ const Index = () => {
       });
 
       if (response.error) {
-        throw new Error(response.error.message || "Analysis failed");
-      }
+  console.error("Supabase Function Error:", response.error);
 
+  const context = response.error.context;
+
+  if (context instanceof Response) {
+    const errorDetails = await context.clone().text();
+
+    console.error("Backend Error Details:", errorDetails);
+
+    throw new Error(errorDetails || response.error.message);
+  }
+
+  throw new Error(response.error.message || "Analysis failed");
+}
       setAnalysisResult(response.data);
       toast({
         title: "Analysis Complete",

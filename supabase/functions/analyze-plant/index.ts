@@ -88,7 +88,7 @@ serve(async (req: Request) => {
     console.log("Analyzing plant image with Gemini...");
 
     const response = await fetch(
-      "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.8-flash:generateContent",
+      "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash-lite:generateContent",
       {
         method: "POST",
         headers: {
@@ -124,13 +124,15 @@ serve(async (req: Request) => {
     );
 
     if (!response.ok) {
-      const errorText = await response.text();
-      console.error("Gemini API error:", response.status, errorText);
+  const errorText = await response.text();
 
-      throw new Error(
-        `Gemini API request failed with status ${response.status}`
-      );
-    }
+  console.error("Gemini API Status:", response.status);
+  console.error("Gemini API Response:", errorText);
+
+  throw new Error(
+    `Gemini API Error ${response.status}: ${errorText}`
+  );
+}
 
     const aiResponse = await response.json();
 
