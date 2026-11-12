@@ -1,0 +1,237 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@layer base {
+  :root {
+    /* Nature-inspired green palette */
+    --background: 120 20% 98%;
+    --foreground: 140 30% 15%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 140 30% 15%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 140 30% 15%;
+
+    /* Fresh forest green */
+    --primary: 142 70% 40%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Earth tones */
+    --secondary: 35 30% 92%;
+    --secondary-foreground: 35 40% 25%;
+
+    --muted: 120 15% 94%;
+    --muted-foreground: 140 15% 45%;
+
+    /* Leaf green accent */
+    --accent: 152 60% 45%;
+    --accent-foreground: 0 0% 100%;
+
+    /* Warning/disease red */
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 140 20% 88%;
+    --input: 140 20% 88%;
+    --ring: 142 70% 40%;
+
+    --radius: 0.75rem;
+
+    /* Custom design tokens */
+    --gradient-nature: linear-gradient(135deg, hsl(142 70% 40%), hsl(152 60% 45%));
+    --gradient-earth: linear-gradient(135deg, hsl(35 40% 85%), hsl(25 35% 80%));
+    --gradient-hero: linear-gradient(180deg, hsl(120 20% 98%) 0%, hsl(140 25% 95%) 100%);
+    --gradient-card: linear-gradient(145deg, hsl(0 0% 100%) 0%, hsl(120 15% 98%) 100%);
+    
+    --shadow-soft: 0 4px 20px -4px hsl(142 70% 40% / 0.15);
+    --shadow-card: 0 8px 32px -8px hsl(140 30% 15% / 0.1);
+    --shadow-elevated: 0 20px 50px -12px hsl(140 30% 15% / 0.15);
+
+    --sidebar-background: 120 20% 97%;
+    --sidebar-foreground: 140 30% 15%;
+    --sidebar-primary: 142 70% 40%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 140 20% 92%;
+    --sidebar-accent-foreground: 140 30% 15%;
+    --sidebar-border: 140 20% 88%;
+    --sidebar-ring: 142 70% 40%;
+
+    /* Success/healthy green */
+    --success: 142 76% 36%;
+    --success-foreground: 0 0% 100%;
+
+    /* Warning yellow */
+    --warning: 45 93% 47%;
+    --warning-foreground: 45 93% 12%;
+  }
+
+  .dark {
+    --background: 140 30% 8%;
+    --foreground: 120 20% 95%;
+
+    --card: 140 25% 12%;
+    --card-foreground: 120 20% 95%;
+
+    --popover: 140 25% 12%;
+    --popover-foreground: 120 20% 95%;
+
+    --primary: 142 65% 50%;
+    --primary-foreground: 140 30% 8%;
+
+    --secondary: 140 20% 18%;
+    --secondary-foreground: 120 20% 90%;
+
+    --muted: 140 20% 18%;
+    --muted-foreground: 140 15% 60%;
+
+    --accent: 152 55% 45%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 62% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 140 20% 20%;
+    --input: 140 20% 20%;
+    --ring: 142 65% 50%;
+
+    --sidebar-background: 140 25% 10%;
+    --sidebar-foreground: 120 20% 95%;
+    --sidebar-primary: 142 65% 50%;
+    --sidebar-primary-foreground: 140 30% 8%;
+    --sidebar-accent: 140 20% 18%;
+    --sidebar-accent-foreground: 120 20% 95%;
+    --sidebar-border: 140 20% 20%;
+    --sidebar-ring: 142 65% 50%;
+
+    --success: 142 70% 45%;
+    --success-foreground: 0 0% 100%;
+
+    --warning: 45 90% 55%;
+    --warning-foreground: 45 93% 12%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'DM Sans', sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Outfit', sans-serif;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-clip-text text-transparent;
+    background-image: var(--gradient-nature);
+  }
+
+  .bg-gradient-nature {
+    background: var(--gradient-nature);
+  }
+
+  .bg-gradient-hero {
+    background: var(--gradient-hero);
+  }
+
+  .bg-gradient-card {
+    background: var(--gradient-card);
+  }
+
+  .shadow-soft {
+    box-shadow: var(--shadow-soft);
+  }
+
+  .shadow-card {
+    box-shadow: var(--shadow-card);
+  }
+
+  .shadow-elevated {
+    box-shadow: var(--shadow-elevated);
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-pulse-soft {
+    animation: pulse-soft 3s ease-in-out infinite;
+  }
+
+  .animate-fade-in {
+    animation: fade-in 0.5s ease-out forwards;
+  }
+
+  .animate-slide-up {
+    animation: slide-up 0.6s ease-out forwards;
+  }
+
+  .animate-scale-in {
+    animation: scale-in 0.4s ease-out forwards;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes pulse-soft {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Leaf pattern background */
+.leaf-pattern {
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 5c-5 8-15 15-15 25s10 15 15 25c5-10 15-15 15-25S35 13 30 5z' fill='%2322c55e' fill-opacity='0.03'/%3E%3C/svg%3E");
+}
